@@ -1,0 +1,48 @@
+
+
+<!--
+<div id="friends">
+  <% @friends.each do |friend| %>
+    <%= render friend %>
+    <p>
+      <%= link_to "Show this friend", friend %>
+    </p>
+  <% end %>
+</div> -->
+
+<% if user_signed_in? %>
+
+  <h1>Friends List</h1>
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Twitter</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @friends.each do |friend| %>
+      <tr>
+        <td><%= link_to friend.first_name + ' ' + friend.last_name, friend %> </td>
+        <td><%= friend.email %></td>
+        <td><%= friend.phone %></td>
+        <td><%= friend.twitter %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New friend", new_friend_path, class:"btn btn-secondary" %>
+
+<% else %>
+
+  <h1>Hello World</h1>
+  <p>Testing</p>
+
+<% end %>
+
+
